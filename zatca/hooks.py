@@ -137,13 +137,11 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"on_submit": "zatca.zatca.doc_events.sales_invoice.after_submit",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -242,3 +240,16 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# monkey patch
+import ksa_compliance.standard_doctypes.sales_invoice
+from zatca.zatca.override.sales_invoice import create_sales_invoice_additional_fields_doctype as csiafd
+
+ksa_compliance.standard_doctypes.sales_invoice.create_sales_invoice_additional_fields_doctype = csiafd
+
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": {"module": ["in", ["Zatca"]]},
+    },
+]
