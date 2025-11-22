@@ -4,11 +4,11 @@ name: CI
 on:
   push:
     branches:
-      - version-15
+      - Version-15
   pull_request:
 
 concurrency:
-  group: version-15-zatca-${{ github.event.number }}
+  group: Version-15-zatca-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
