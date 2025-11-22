@@ -3,7 +3,7 @@ app_title = "Zatca"
 app_publisher = "Finbyz"
 app_description = "Zatca"
 app_email = "info@finbyz.tech"
-app_license = "mit"
+app_license = "GPL-3.0"
 
 # Apps
 # ------------------

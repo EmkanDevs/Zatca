@@ -4,4 +4,4 @@ Zatca
 
 #### License
 
-mit# Zatca
+GPL-3.0

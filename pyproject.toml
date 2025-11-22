@@ -1,5 +1,6 @@
 [project]
 name = "zatca"
+license = { file = "license.txt" }
 authors = [
     { name = "Finbyz", email = "info@finbyz.tech"}
 ]
