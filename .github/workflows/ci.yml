@@ -102,10 +102,10 @@ jobs:
       - name: Install
         working-directory: /home/runner/frappe-bench
         run: |
-          bench get-app mkan_customization $GITHUB_WORKSPACE
+          bench get-app zatca $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site --db-root-password root --admin-password admin test_site
-          bench --site test_site install-app mkan_customization
+          bench --site test_site install-app zatca
           bench build
         env:
           CI: 'Yes'
@@ -114,6 +114,6 @@ jobs:
         working-directory: /home/runner/frappe-bench
         run: |
           bench --site test_site set-config allow_tests true
-          bench --site test_site run-tests --app mkan_customization
+          bench --site test_site run-tests --app zatca
         env:
           TYPE: server
