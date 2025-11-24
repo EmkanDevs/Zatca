@@ -90,8 +90,8 @@ jobs:
         working-directory: /home/runner/frappe-bench
         run: |
           bench get-app erpnext --branch version-15
-          bench get-app ksa_compliance $GITHUB_WORKSPACE
-          bench get-app zatca $GITHUB_WORKSPACE
+          bench get-app ksa_compliance https://github.com/lavaloon-eg/ksa_compliance.git
+          bench get-app $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site test_site --db-root-password root --admin-password admin --no-mariadb-socket
           bench --site test_site install-app erpnext
