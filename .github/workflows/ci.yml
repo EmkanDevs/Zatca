@@ -86,26 +86,17 @@ jobs:
           mariadb --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL character_set_server = 'utf8mb4'"
           mariadb --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL collation_server = 'utf8mb4_unicode_ci'"
 
-      - name: Install
-        working-directory: /home/runner/frappe-bench
-        run: |
-          bench get-app zatca $GITHUB_WORKSPACE
-          bench setup requirements --dev
-          bench new-site --db-root-password root --admin-password admin test_site
-          bench --site test_site install-app zatca
-          bench build
-        env:
-          CI: 'Yes'
-          
       - name:  Install ERPNext and Custom App
         working-directory: /home/runner/frappe-bench
         run: |
           bench get-app erpnext --branch version-15
           bench get-app ksa_compliance $GITHUB_WORKSPACE
+          bench get-app zatca $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site test_site --db-root-password root --admin-password admin --no-mariadb-socket
           bench --site test_site install-app erpnext
           bench --site test_site install-app ksa_compliance
+          bench --site test_site install-app zatca
           bench build
         env:
           CI: 'Yes'
