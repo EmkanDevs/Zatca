@@ -2,11 +2,11 @@ frappe.ui.form.on('Sales Invoice', {
 
     refresh: function (frm) {
 
-        if (frm.doc.docstatus === 1) {  // optional condition
+        if (frm.doc.docstatus === 1 && frappe.db.get_value('Sales Invoice Additional Fields',{ sales_invoice: frm.doc.name },'name')) {  // optional condition
 
             let btn = frm.add_custom_button(__('Zatca PDF/XML'), async function () {
 
-                let res = frappe.db.get_value(
+                let res = await frappe.db.get_value(
                     'Sales Invoice Additional Fields',
                     { sales_invoice: frm.doc.name },
                     'name'
