@@ -6,7 +6,7 @@ frappe.ui.form.on('Sales Invoice', {
 
             let btn = frm.add_custom_button(__('Zatca PDF/XML'), async function () {
 
-                let res = await frappe.db.get_value(
+                let res = frappe.db.get_value(
                     'Sales Invoice Additional Fields',
                     { sales_invoice: frm.doc.name },
                     'name'
